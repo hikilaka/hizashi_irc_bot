@@ -1,0 +1,7 @@
+{
+    "client": {
+        "server": "localhost",
+        "port": replace_with_hizashi_port,
+        "socketTimeout": 30000
+    }
+}
