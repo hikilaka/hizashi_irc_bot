@@ -13,5 +13,123 @@
         "port": server_port_here,
         "maxConnections": 50,
         "socketTimeout": 30000
+    },
+    "manager": {
+        "nodeExecutable": "/usr/bin/node",
+        "serviceDirectory": "./services",
+	    "ui": {
+            "title": "Hizashi manager",
+            "pane": {
+                "top": "center",
+                "left": "center",
+                "width": "100%",
+                "height": "100%",
+                "label": "{bold}Hizashi manager{/bold}",
+                "tags": true,
+                "vi": false,
+                "keys": false,
+                "border": {
+                    "type": "line"
+                },
+                "style": {
+                    "fg": "white",
+                    "bg": "black"
+                }
+            },
+            "services": {
+                "hoverText": "Available services to manage",
+                "mouse": true,
+                "keys": true,
+                "vi": false,
+                "width": "50%",
+                "height": "30%",
+                "label": "Services",
+                "border": {
+                    "type": "line",
+                    "fg": "cyan"
+                },
+                "style": {
+                    "item": {
+                        "hover": {
+                            "bg": "red"
+                        }
+                    },
+                    "selected": {
+                        "bg": "red",
+                        "bold": true
+                    }
+                }
+            },
+            "console": {
+                "top": "30%",
+                "width": "99%",
+                "height": "68%",
+                "hoverText": "Console output from running processes",
+                "label": "Console",
+                "keys": false,
+                "vi": false,
+                "border": {
+                    "type": "line",
+                    "fg": "cyan"
+                },
+                "scrollbar": {
+                    "ch": " ",
+                    "track": {
+                        "bg": "cyan"
+                    },
+                    "style": {
+                        "inverse": true
+                    }
+                },
+                "scrollable": true
+            },
+            "commands": {
+                "left": "70%",
+                "width": "29%",
+                "height": "30%",
+                "hoverText": "Command help",
+                "label": "Commands",
+                "tags": true,
+                "keys": false,
+                "vi": false,
+                "scrollable": true,
+                "border": {
+                    "type": "line",
+                    "fg": "cyan"
+                }
+            },
+            "status": {
+                "left": "50%",
+                "width": "20%",
+                "height": "30%",
+                "hoverText": "Bot status",
+                "label": "Status",
+                "tags": true,
+                "keys": false,
+                "vi": false,
+                "scrollable": true,
+                "border": {
+                    "type": "line",
+                    "fg": "cyan"
+                }
+            },
+            "prompt": {
+                "top": "center",
+                "left": "center",
+                "width": "shrink",
+                "height": "shrink",
+                "keys": true,
+                "mouse": true,
+                "tags": true,
+                "border": {
+                    "type": "line",
+                    "fg": "cyan"
+                },
+                "style": {
+                    "fg": "white",
+                    "bg": "black"
+                }
+            }
+	    }
     }
 }
