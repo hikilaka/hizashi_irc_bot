@@ -6,10 +6,17 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Zack Penn",
-  "license": "AGPL",
+  "author": "",
+  "license": "ISC",
   "dependencies": {
+    "@google-cloud/vision": "^0.12.0",
+    "blessed": "^0.1.81",
     "bson": "^1.0.4",
-    "irc-framework": "^2.9.1"
+    "colors": "^1.1.2",
+    "google-cloud": "^0.57.0",
+    "irc-colors": "^1.4.2",
+    "irc-framework": "^2.9.1",
+    "randomized-interval": "^1.0.3",
+    "ztable": "^1.0.7"
   }
 }
