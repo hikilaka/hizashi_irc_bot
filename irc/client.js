@@ -1,32 +1,38 @@
 const irc = require('irc-framework');
 
 class HizashiClient {
-    constructor(config) {
+    constructor(config, vconsole) {
         this.config = config;
+        this.console = vconsole || console;
         this.bot = new irc.Client();
-        // TODO: use middleware for nickserv verification?
+        // TODO: use middleware for nickserv verification
 
         // registered needs to be handled by this object in order
         // to join channels & verify w/ nickserv
         this.bot.on('registered', () => {
-            console.log('registered on network');
+            this.console.log('registered on network');
+
+            if (this.connectHandler) {
+                this.connectHandler();
+            }
         
             let nickserv = config.irc.nickserv;
         
             if (nickserv) {
                 this.bot.say('nickserv', `identify ${nickserv}`);
-                console.log('identified with nickserv');
+                this.console.log('identified with nickserv');
             }
         
             let channels = config.irc.channels;
         
             if (channels && Array.isArray(channels)) {
                 channels.forEach(channel => this.bot.join(channel));
-                console.log(`joined ${channels.length} channel[s]`);
+                this.console.log(`joined ${channels.length} channel[s]`);
             }
         });
     }
-    connect() {
+    connect(connectHandler) {
+        this.connectHandler = connectHandler;
         this.bot.connect(this.config.irc);
     }
     catchAllEvents(handler) {

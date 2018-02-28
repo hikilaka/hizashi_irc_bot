@@ -94,7 +94,7 @@ function hookListeners(client) {
     client.socket.on('data', data => {
         try {
             let event = new bson.BSON().deserialize(data);
-            console.log(`got event: ${JSON.stringify(event)}`);
+
             if (event.type === 'privmsg' || event.type === 'notice') {
                 event.reply = message => client.message(event.target, message);
             }

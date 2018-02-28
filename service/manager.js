@@ -2,10 +2,12 @@ const color = require('colors');
 
 function handleStart(manager, service, index) {
     manager.list.setItem(index, '[running] '.green + service.name);    
+    manager.console.screen.render();
 }
 
 function handleStop(manager, service, index) {
     manager.list.setItem(index, '[idle] '.yellow + service.name);
+    manager.console.screen.render();
 }
 
 class HizashiServiceManager {
