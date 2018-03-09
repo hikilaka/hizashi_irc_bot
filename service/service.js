@@ -1,5 +1,5 @@
-const childProcess = require('child_process'),
-    colors = require('colors');
+const { spawn } = require('child_process'),
+    colors = require('chalk');
 
 const config = require('../config');
 
@@ -14,13 +14,12 @@ class HizashiService {
         if (this.isRunning()) {
             return;
         }
-        this.process = childProcess.spawn(config.manager.nodeExecutable,
-            [this.file]);
+        this.process = spawn(config.manager.nodeExecutable, [this.file]);
         this.process.stdout.on('data', data =>
-            this.console.log('['.green + this.name + '] '.green
+            this.console.log(colors.green('[') + this.name + colors.green('] ') 
                 + data.toString().trim()));
         this.process.stderr.on('data', data =>
-            this.console.log('['.red + this.name + '] '.red
+            this.console.log(colors.red('[') + this.name + colors.red('] ')
                 + data.toString().trim()));
         this.process.on('close', closeListener);
     }
