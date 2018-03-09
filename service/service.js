@@ -1,5 +1,6 @@
 const { spawn } = require('child_process'),
-    colors = require('chalk');
+    colors = require('chalk'),
+    { which } = require('shelljs');
 
 const config = require('../config');
 
@@ -14,7 +15,11 @@ class HizashiService {
         if (this.isRunning()) {
             return;
         }
-        this.process = spawn(config.manager.nodeExecutable, [this.file]);
+
+        const nodePath = which('node')
+        const nodeExecutable = nodePath ? nodePath.stdout : config.manager.nodeExecutable
+        
+        this.process = spawn(nodeExecutable, [this.file]);
         this.process.stdout.on('data', data =>
             this.console.log(colors.green('[') + this.name + colors.green('] ') 
                 + data.toString().trim()));
