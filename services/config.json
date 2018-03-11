@@ -1,7 +1,22 @@
 {
     "client": {
         "server": "localhost",
-        "port": replace_with_hizashi_port,
+        "port": 9001,
         "socketTimeout": 30000
+    },
+    "services": {
+        "wolfram": {
+            "appKey": "APP_KEY_HERE"
+        },
+        "reddit": {
+            "userAgent": "USER_AGENT_HERE",
+            "clientId": "REDDIT_APP_ID_HERE",
+            "clientSecret": "REDDIT_SECRET_TOKEN_HERE",
+            "username": "REDDIT_USERNAME_HERE",
+            "password": "REDDIT_PW_HERE",
+            "subreddit": "SUBREDDIT_HERE",
+	    "observer": "IRC_NICK_HERE"
+	}
     }
 }
+
