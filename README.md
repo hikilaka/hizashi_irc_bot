@@ -4,9 +4,9 @@ Hizashi is a modular IRC bot that is able to reload services on-the-fly without 
 
 ### New Features!
 
-  - [2/26/2017] Added an **awesome** CLI process manager, you can still optionally run Hizashi without it. To use this new manager, use `manager.js`
+  - [2/26/2017] Added a curses based service manager, you can still optionally run Hizashi without it. To use this new manager, use `npm run start`. To run in headless mode, use `npm run start-headless`.
 
-![](https://i.imgur.com/aPCWHzo.png)
+![](https://i.imgur.com/2Tss7Iw.png)
 
 ### How Hizashi works
 
@@ -22,10 +22,10 @@ Install the dependencies and start Hizashi.
 ```sh
 $ cd hizashi
 $ npm install
-$ node manager.js
+$ npm run start
 ```
 
-Don't forget to change `config.json`!
+Don't forget to configure `config.json` and `services/config.json` accordingly!
 
 ### Services
 
@@ -36,6 +36,9 @@ Hizashi currently ships with a few services.
 | echo | A basic echo reactor |
 | random_name | Grabs a random name from a file |
 | image_info | Analyzes images with Google Vision |
+| invite_listener | Listens for channel invite requests |
+| reddit | Posts specific urls to Reddit |
+| wolfram_alpha | Basic math calculations using W-A [WIP] |
 
 License
 ----
