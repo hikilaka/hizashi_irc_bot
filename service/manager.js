@@ -1,12 +1,12 @@
-const color = require('colors');
+const colors = require('chalk');
 
 function handleStart(manager, service, index) {
-    manager.list.setItem(index, '[running] '.green + service.name);    
+    manager.list.setItem(index, `${colors.green('[running]')} ${service.name}`);    
     manager.console.screen.render();
 }
 
 function handleStop(manager, service, index) {
-    manager.list.setItem(index, '[idle] '.yellow + service.name);
+    manager.list.setItem(index, `${colors.yellow('[idle]')} ${service.name}`);
     manager.console.screen.render();
 }
 

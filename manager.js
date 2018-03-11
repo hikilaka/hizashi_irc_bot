@@ -1,5 +1,5 @@
 const blessed = require('blessed'),
-    colors = require('colors'),
+    colors = require('chalk'),
     bson = require('bson');
 
 const config = require('./config'),
@@ -46,10 +46,10 @@ screen.append(pane);
 screen.append(prompt);
 
 const states = [
-    'state: ' + 'disconnected'.red,
-    'server: ' + config.irc.host.yellow,
-    'nick: ' + config.irc.nick.cyan,
-    'channels: ' + config.irc.channels.map(c => c.magenta).join(', ')
+    'state: ' + colors.red('disconnected'),
+    'server: ' + colors.yellow(config.irc.host),
+    'nick: ' + colors.cyan(config.irc.nick),
+    'channels: ' + config.irc.channels.map(c => colors.magenta(c)).join(', ')
 ];
 
 // TODO: maybe generate this dynamically or from a config file
@@ -65,7 +65,7 @@ const commands = [
 ];
 
 // populate the service, status, and command fields
-services.forEach(service => list.pushItem('[idle] '.yellow + service.name));
+services.forEach(service => list.pushItem(colors.yellow('[idle] ') + service.name));
 states.forEach(state => status.pushLine(state));
 commands.forEach(command => commandsBox.pushLine(command));
 
@@ -150,6 +150,6 @@ server.catchAllResponses(response => {
 
 server.start(() => {
     vconsole.log('server online -- now accepting connections');
-    status.setLine(0, 'state: ' + 'connected'.green);
+    status.setLine(0, `state: ${colors.green('connected')}`);
     bot.connect();
 });
